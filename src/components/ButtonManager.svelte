@@ -10,7 +10,7 @@
     function handleClick(e){
         const oldId = currentId;
         currentId = e.detail.id;
-        console.log("Old: " + oldId + " New: " + currentId)
+        //console.log("Old: " + oldId + " New: " + currentId)
 
         if(currentId == oldId){
             soundButtons[currentId].toggle(true);
@@ -34,12 +34,20 @@
 <style>
     .buttonGrid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 0.5rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    p > strong {
+        color: lightcoral;
     }
 </style>
 
-<p><strong>Now Playing</strong> {currentId > -1 ? soundButtons[currentId].name : "Nothing"}</p>
+<p>Now Playing <strong>{currentId > -1 ? soundButtons[currentId].name : "Nothing"}</strong></p>
 
 <div class="buttonGrid">
     {#each soundButtons as soundButton, index (soundButton.id)}

@@ -7,13 +7,13 @@
     export let source = "anime-wow.mp3";
 
     let buttonImage = "button_normal.png";
-    const dispatch = createEventDispatcher();
-
     let player;
+
+    const dispatch = createEventDispatcher();
     
     export const toggle = (keepHover = false) => {
         isPlaying = !isPlaying;
-        console.log("Click: " + id);
+        //console.log("Click: " + id);
         if(isPlaying){
             turnOn();
             return;
