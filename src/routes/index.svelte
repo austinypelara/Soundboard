@@ -42,7 +42,9 @@
 </script>
 
 <style>
-    
+    h1 {
+        padding: 2rem 0;
+    }
 </style>
 
 <main class="ctn">
