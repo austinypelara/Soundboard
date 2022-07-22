@@ -1,4 +1,5 @@
 <script>
+    import {base} from "$app/paths";
     import { createEventDispatcher } from "svelte";
 
     export let id = 0;
@@ -6,7 +7,9 @@
     export let name = "";
     export let source = "anime-wow.mp3";
 
-    let buttonImage = "button_normal.png";
+    $: baseSource = base + "/" + source;
+
+    let buttonImage = base + "/button_normal.png";
     let player;
 
     const dispatch = createEventDispatcher();
@@ -31,23 +34,23 @@
         isPlaying = false;
         player.pause();
         player.currentTime = 0;
-        buttonImage = "button_normal.png";
+        buttonImage = base + "/button_normal.png";
     }
 
     export const turnOn = () => {
         isPlaying = true;
         player.play();
-        buttonImage = "button_pressed.png";
+        buttonImage = base + "/button_pressed.png";
     }
 
     function onHover(){
         if(isPlaying) return;
-        buttonImage = "button_hover.png";
+        buttonImage = base + "/button_hover.png";
     }
 
     function onExit(){
         if(isPlaying) return;
-        buttonImage = "button_normal.png";
+        buttonImage = base + "/button_normal.png";
     }
 </script>
 
@@ -73,5 +76,5 @@
 <div class="soundButton">
     <img alt="Sound Button" src="{buttonImage}" on:mouseenter={onHover} on:mouseleave={onExit} on:click={() => {dispatch("click", {id: id, callback: toggle})}} />
     <p>{name}</p>
-    <audio bind:this={player} src={source} on:ended={() => {turnOff(); dispatch("complete", id)}}></audio>
+    <audio bind:this={player} src={baseSource} on:ended={() => {turnOff(); dispatch("complete", id)}}></audio>
 </div>
