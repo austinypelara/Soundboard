@@ -34,11 +34,11 @@ npm run dev
 
 The site is hosted at [https://localhost:5173/Soundboard](https://localhost:5173/Soundboard). By default, it is not hosting at the root simply because it helps avoid issues with hosting on [Github Pages](https://pages.github.com/). You can change this by modifying the `svelte.config.js` file:
 
-```bash
+```js
 // Change
 const dev = false;
 
-// Or
+// To
 const dev = true;
 ```
 
